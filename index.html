@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KRNS Workshops app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --bg: #f4f4f4;
+        --card-bg: #ffffff;
+        --primary: #111111;
+        --accent: #007bff;
+        --danger: #e53935;
+        --text-main: #111111;
+        --text-muted: #777777;
+        --border: #dddddd;
+        --radius-lg: 14px;
+        --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+      }
+
+      .app {
+        max-width: 430px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+      }
+
+      /* Top bar */
+      .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .app-title {
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .lang-toggle-btn {
+        border: 1px solid var(--border);
+        background: var(--card-bg);
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .lang-tag {
+        padding: 2px 6px;
+        border-radius: 999px;
+        font-size: 11px;
+      }
+
+      .lang-tag.active {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .lang-tag.inactive {
+        background: transparent;
+        color: var(--text-muted);
+      }
+
+      .main-layout {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 12px 60px;
+      }
+
+      /* Global search card */
+      .global-search-card {
+        background: var(--card-bg);
+        border-radius: 18px;
+        padding: 12px 14px 10px;
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 14px;
+      }
+
+      .global-search-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .global-search-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 6px 0 4px;
+      }
+
+      .global-search-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .input,
+      .select,
+      .textarea {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        padding: 9px 10px;
+        font-size: 14px;
+        outline: none;
+        background: #ffffff;
+      }
+
+      .input:focus,
+      .select:focus,
+      .textarea:focus {
+        border-color: var(--accent);
+      }
+
+      .btn {
+        border-radius: 999px;
+        border: none;
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        background: #eeeeee;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .btn-danger {
+        background: var(--danger);
+        color: #ffffff;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--border);
+      }
+
+      .btn-small {
+        padding: 4px 8px;
+        font-size: 12px;
+      }
+
+      .btn-full {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .global-search-results {
+        margin-top: 6px;
+        max-height: 220px;
+        overflow-y: auto;
+      }
+
+      .search-result-card {
+        background: #fafafa;
+        border-radius: 10px;
+        padding: 6px 8px;
+        margin-bottom: 6px;
+        border: 1px solid #eeeeee;
+        font-size: 12px;
+      }
+
+      .search-result-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        margin-bottom: 2px;
+      }
+
+      .search-result-main {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .search-result-actions {
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+
+      .empty-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        padding: 4px 0;
+      }
+
+      /* Screens */
+      .screen {
+        display: none;
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      /* HOME */
+      .home-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .home-btn {
+        width: 100%;
+        border-radius: 999px;
+        padding: 14px 16px;
+        font-size: 15px;
+        font-weight: 500;
+        border: 1px solid var(--border);
+        background: #ffffff;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .home-btn-primary {
+        background: #111111;
+        color: #ffffff;
+        border-color: #111111;
+      }
+
+      /* Forms & lists */
+      .section-card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: 8px 10px;
+        margin-bottom: 8px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .section-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .form-row {
+        margin-bottom: 6px;
+      }
+
+      .label {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+      }
+
+      .list {
+        max-height: 260px;
+        overflow-y: auto;
+      }
+
+      .list-item-card {
+        border-radius: 10px;
+        border: 1px solid #eeeeee;
+        padding: 6px 8px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        background: #fafafa;
+      }
+
+      .list-item-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2px;
+      }
+
+      .list-item-title {
+        font-weight: 600;
+      }
+
+      .list-item-sub {
+        color: var(--text-muted);
+      }
+
+      .list-item-footer {
+        margin-top: 2px;
+        color: var(--text-muted);
+      }
+
+      .clickable {
+        cursor: pointer;
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 2px 6px;
+        font-size: 11px;
+      }
+
+      .badge-overdue {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .badge-today {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+
+      .badge-upcoming {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .status-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .text-small {
+        font-size: 11px;
+      }
+
+      .text-muted {
+        color: var(--text-muted);
+      }
+
+      /* Bottom nav */
+      .bottom-nav {
+        position: sticky;
+        bottom: 0;
+        background: #ffffff;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-around;
+        padding: 4px 0 4px;
+        z-index: 10;
+      }
+
+      .tab-btn {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 11px;
+        padding: 6px 4px 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .tab-icon {
+        font-size: 17px;
+      }
+
+      .tab-btn.active {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .mt-4 {
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Top bar -->
+      <header class="top-bar">
+        <div class="app-title" data-t="app_title"></div>
+        <button id="langToggleBtn" class="lang-toggle-btn" type="button">
+          <span class="lang-tag active" data-lang-tag="en">EN</span>
+          <span class="lang-tag inactive" data-lang-tag="ta">TA</span>
+        </button>
+      </header>
+
+      <div class="main-layout">
+        <!-- GLOBAL SEARCH -->
+        <section class="global-search-card">
+          <div class="global-search-title" data-t="global_search_title">
+            History search
+          </div>
+          <div class="form-row">
+            <input
+              id="globalSearchInput"
+              class="input"
+              type="text"
+              data-t-placeholder="global_search_placeholder"
+            />
+          </div>
+          <div class="global-search-label" data-t="global_search_date_label">
+            Filter by job date (optional)
+          </div>
+          <div class="global-search-row">
+            <input
+              id="globalSearchDate"
+              class="input"
+              type="date"
+              data-t-placeholder="global_search_date_placeholder"
+            />
+            <button
+              id="globalSearchClear"
+              class="btn btn-small btn-outline"
+              type="button"
+              data-t="clear"
+            >
+              Clear
+            </button>
+          </div>
+          <div id="globalSearchResults" class="global-search-results"></div>
+        </section>
+
+        <main id="screenContainer">
+          <!-- HOME -->
+          <section class="screen" data-screen="home">
+            <div class="home-actions">
+              <button
+                class="home-btn home-btn-primary"
+                type="button"
+                data-action="openJobForm"
+              >
+                <span data-t="home_quick_new_job_title">New Job</span>
+              </button>
+
+              <button
+                class="home-btn"
+                type="button"
+                data-action="openCustomers"
+              >
+                <span data-t="home_quick_customers_title">Customers</span>
+              </button>
+
+              <button
+                class="home-btn"
+                type="button"
+                data-action="openToday"
+              >
+                <span data-t="home_quick_today_title">Today</span>
+              </button>
+
+              <button
+                class="home-btn"
+                type="button"
+                data-action="openReminders"
+              >
+                <span data-t="home_quick_reminders_title">Reminders</span>
+              </button>
+
+              <!-- Direct Billing button on Home -->
+              <button
+                class="home-btn"
+                type="button"
+                onclick="window.location.href='billing.html'"
+              >
+                <span>Billing</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- CUSTOMERS -->
+          <section class="screen" data-screen="customers">
+            <section class="section-card">
+              <div class="section-title" data-t="customer_form_title"></div>
+              <form id="customerForm">
+                <div class="form-row">
+                  <label class="label" data-t="customer_name_label"></label>
+                  <input
+                    id="customerNameInput"
+                    class="input"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="customer_phone_label"></label>
+                  <input
+                    id="customerPhoneInput"
+                    class="input"
+                    type="tel"
+                    required
+                  />
+                </div>
+                <div class="form-row checkbox-row">
+                  <input
+                    id="customerWhatsappInput"
+                    type="checkbox"
+                    checked
+                  />
+                  <label
+                    for="customerWhatsappInput"
+                    data-t="customer_whatsapp_label"
+                  ></label>
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="customer_notes_label"></label>
+                  <textarea
+                    id="customerNotesInput"
+                    class="textarea"
+                    rows="2"
+                  ></textarea>
+                </div>
+                <button
+                  class="btn btn-primary btn-full mt-4"
+                  type="submit"
+                  data-t="save_customer"
+                ></button>
+              </form>
+            </section>
+
+            <section class="section-card">
+              <div class="form-row">
+                <input
+                  id="customerSearchInput"
+                  class="input"
+                  type="text"
+                  data-t-placeholder="customer_search_placeholder"
+                />
+              </div>
+              <div id="customerList" class="list"></div>
+            </section>
+          </section>
+
+          <!-- CUSTOMER DETAIL -->
+          <section class="screen" data-screen="customerDetail">
+            <section class="section-card">
+              <div class="section-title" data-t="customer_detail_title"></div>
+              <div class="form-row">
+                <div id="customerDetailName" class="label"></div>
+                <div id="customerDetailPhone" class="text-small"></div>
+                <div
+                  id="customerDetailNotes"
+                  class="text-small mt-4"
+                ></div>
+              </div>
+
+              <div class="status-line mt-4">
+                <button
+                  id="customerDetailAddVehicleBtn"
+                  class="btn btn-small btn-outline"
+                  type="button"
+                  data-t="customer_detail_add_vehicle"
+                ></button>
+                <button
+                  id="customerDetailAddJobBtn"
+                  class="btn btn-small btn-primary"
+                  type="button"
+                  data-t="customer_detail_add_job"
+                ></button>
+                <button
+                  id="customerDetailHistoryBtn"
+                  class="btn btn-small btn-outline"
+                  type="button"
+                  data-t="customer_detail_history_btn"
+                ></button>
+              </div>
+            </section>
+
+            <section class="section-card">
+              <div
+                class="section-title"
+                data-t="customer_detail_vehicles_title"
+              ></div>
+              <div id="customerDetailVehicleList"></div>
+            </section>
+          </section>
+
+          <!-- CUSTOMER HISTORY -->
+          <section class="screen" data-screen="customerHistory">
+            <section class="section-card">
+              <div class="section-title" data-t="customer_history_title"></div>
+              <div class="form-row">
+                <div id="customerHistoryName" class="label"></div>
+                <div id="customerHistoryPhone" class="text-small"></div>
+                <div
+                  id="customerHistoryNotes"
+                  class="text-small mt-4"
+                ></div>
+              </div>
+            </section>
+
+            <section class="section-card">
+              <div id="customerHistoryList" class="list"></div>
+            </section>
+          </section>
+
+          <!-- VEHICLES -->
+          <section class="screen" data-screen="vehicles">
+            <section class="section-card">
+              <div class="section-title" data-t="vehicle_form_title"></div>
+              <form id="vehicleForm">
+                <div class="form-row">
+                  <label class="label" data-t="vehicle_customer_label"></label>
+                  <select
+                    id="vehicleCustomerSelect"
+                    class="select"
+                    required
+                  ></select>
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="vehicle_type_label"></label>
+                  <select
+                    id="vehicleTypeSelect"
+                    class="select"
+                    required
+                  >
+                    <option value="">--</option>
+                    <option value="bike" data-t-option="vehicle_type_bike">
+                      Bike
+                    </option>
+                    <option value="car" data-t-option="vehicle_type_car">
+                      Car
+                    </option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="vehicle_model_label"></label>
+                  <input
+                    id="vehicleModelInput"
+                    class="input"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="vehicle_number_label"></label>
+                  <input
+                    id="vehicleNumberInput"
+                    class="input"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="vehicle_notes_label"></label>
+                  <textarea
+                    id="vehicleNotesInput"
+                    class="textarea"
+                    rows="2"
+                  ></textarea>
+                </div>
+                <button
+                  class="btn btn-primary btn-full mt-4"
+                  type="submit"
+                  data-t="save_vehicle"
+                ></button>
+              </form>
+            </section>
+
+            <section class="section-card">
+              <div class="form-row">
+                <input
+                  id="vehicleSearchInput"
+                  class="input"
+                  type="text"
+                  data-t-placeholder="vehicle_search_placeholder"
+                />
+              </div>
+              <div id="vehicleList" class="list"></div>
+            </section>
+          </section>
+
+          <!-- JOBS -->
+          <section class="screen" data-screen="jobs">
+            <section class="section-card">
+              <div id="jobFormTitle" class="section-title"></div>
+              <form id="jobForm">
+                <div class="form-row">
+                  <label class="label" data-t="job_date_label"></label>
+                  <input
+                    id="jobDateInput"
+                    class="input"
+                    type="date"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <label
+                    class="label"
+                    data-t="job_vehicle_number_label"
+                  ></label>
+                  <input
+                    id="jobVehicleNumberInput"
+                    class="input"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <label
+                    class="label"
+                    data-t="job_vehicle_model_label"
+                  ></label>
+                  <input
+                    id="jobVehicleModelInput"
+                    class="input"
+                    type="text"
+                  />
+                </div>
+                <div class="form-row">
+                  <label
+                    class="label"
+                    data-t="job_description_label"
+                  ></label>
+                  <textarea
+                    id="jobDescriptionInput"
+                    class="textarea"
+                    rows="2"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="job_amount_label"></label>
+                  <input
+                    id="jobAmountInput"
+                    class="input"
+                    type="number"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-row">
+                  <label class="label" data-t="job_next_date_label"></label>
+                  <input
+                    id="jobNextDateInput"
+                    class="input"
+                    type="date"
+                  />
+                </div>
+                <div class="form-row">
+                  <label
+                    class="label"
+                    data-t="job_customer_name_label"
+                  ></label>
+                  <input
+                    id="jobCustomerNameInput"
+                    class="input"
+                    type="text"
+                  />
+                </div>
+                <div class="form-row">
+                  <label
+                    class="label"
+                    data-t="job_customer_phone_label"
+                  ></label>
+                  <input
+                    id="jobCustomerPhoneInput"
+                    class="input"
+                    type="tel"
+                  />
+                </div>
+                <div
+                  id="jobFormModeLabel"
+                  class="text-small text-muted mt-4 hidden"
+                  data-t="job_editing_hint"
+                ></div>
+                <button
+                  id="jobFormSubmitBtn"
+                  class="btn btn-primary btn-full mt-4"
+                  type="submit"
+                ></button>
+              </form>
+            </section>
+
+            <section class="section-card">
+              <div class="section-title" data-t="today_title"></div>
+              <div id="jobsTodayList" class="list"></div>
+            </section>
+          </section>
+
+          <!-- TODAY -->
+          <section class="screen" data-screen="today">
+            <section class="section-card">
+              <div class="section-title" data-t="today_title"></div>
+              <div id="todayList" class="list"></div>
+            </section>
+          </section>
+
+          <!-- REMINDERS -->
+          <section class="screen" data-screen="reminders">
+            <section class="section-card">
+              <div class="section-title" data-t="reminders_title"></div>
+              <div id="remindersList" class="list"></div>
+            </section>
+          </section>
+        </main>
+      </div>
+
+      <!-- Bottom nav -->
+      <nav class="bottom-nav">
+        <button class="tab-btn" type="button" data-tab="home">
+          <span class="tab-icon">🏠</span>
+          <span data-t="tab_home"></span>
+        </button>
+        <button class="tab-btn" type="button" data-tab="customers">
+          <span class="tab-icon">👤</span>
+          <span data-t="tab_customers"></span>
+        </button>
+        <button class="tab-btn" type="button" data-tab="jobs">
+          <span class="tab-icon">🧰</span>
+          <span data-t="tab_jobs"></span>
+        </button>
+        <button class="tab-btn" type="button" data-tab="reminders">
+          <span class="tab-icon">🔔</span>
+          <span data-t="tab_reminders"></span>
+        </button>
+        <!-- Billing in bottom nav -> opens separate page -->
+        <button
+          class="tab-btn"
+          type="button"
+          onclick="window.location.href='billing.html'"
+        >
+          <span class="tab-icon">🧾</span>
+          <span>Billing</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Main CRM logic -->
+    <script src="script.js"></script>
+  </body>
+</html>

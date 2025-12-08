@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KRNS Billing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --bg: #f4f4f4;
+        --card-bg: #ffffff;
+        --primary: #111111;
+        --accent: #007bff;
+        --text-main: #111111;
+        --text-muted: #777777;
+        --border: #dddddd;
+        --radius-lg: 14px;
+        --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+      }
+
+      .app {
+        max-width: 430px;
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 16px 12px 24px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 12px;
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: 10px 12px;
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .input {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        padding: 9px 10px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .input:focus {
+        border-color: var(--accent);
+      }
+
+      .list {
+        max-height: 260px;
+        overflow-y: auto;
+        margin-top: 8px;
+      }
+
+      .job-card {
+        border-radius: 10px;
+        border: 1px solid #eeeeee;
+        padding: 6px 8px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        background: #fafafa;
+        cursor: pointer;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2px;
+      }
+
+      .job-main {
+        font-weight: 600;
+      }
+
+      .job-sub {
+        color: var(--text-muted);
+      }
+
+      .job-foot {
+        margin-top: 2px;
+        color: var(--text-muted);
+      }
+
+      .empty-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        padding: 4px 0;
+      }
+
+      .bill-box {
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        background: #ffffff;
+        font-size: 13px;
+
+        /* center the bill on screen */
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .bill-line {
+        margin: 4px 0;
+      }
+
+      .bill-label {
+        font-weight: 600;
+      }
+
+      .bill-total {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px dashed #aaa;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 10px;
+        font-size: 13px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: #f5f5f5;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #ffffff;
+        border-color: var(--primary);
+      }
+
+      /* ---------- PRINT LAYOUT ---------- */
+      @media print {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: #ffffff;
+        }
+
+        .app {
+          max-width: 100%;
+          padding: 10mm 15mm;
+        }
+
+        /* center header on page and reduce gap */
+        .header {
+          margin-top: 0;
+          margin-bottom: 6mm;
+          text-align: center;
+        }
+
+        /* hide the search section completely in print */
+        .card:first-of-type {
+          display: none;
+        }
+
+        /* remove card look, just keep bill content */
+        .card {
+          box-shadow: none;
+          border-radius: 0;
+          border: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        /* hide "Bill preview" title in print */
+        .card .section-title {
+          display: none;
+        }
+
+        /* bill takes full printable width, clean border */
+        .bill-box {
+          max-width: 100%;
+          margin: 0;
+          border-radius: 0;
+          border: 1px solid #000;
+          padding: 6mm 8mm;
+          font-size: 14px;
+        }
+
+        .bill-total {
+          margin-top: 8mm;
+          padding-top: 3mm;
+          border-top: 1px solid #000;
+          font-size: 16px;
+        }
+
+        /* hide buttons in print */
+        .btn-row {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <div class="title">Billing 🧾</div>
+        <div class="subtitle">from KRNS Workshop</div>
+      </div>
+
+      <!-- SEARCH JOB FROM EXISTING SERVICES (screen only) -->
+      <section class="card">
+        <div class="section-title">Select job for billing</div>
+        <input
+          id="jobSearchInput"
+          class="input"
+          type="text"
+          placeholder="Search vehicle no. / customer / date"
+        />
+        <div id="jobList" class="list"></div>
+      </section>
+
+      <!-- BILL PREVIEW -->
+      <section class="card">
+        <div class="section-title">Bill preview</div>
+        <div id="billBox" class="bill-box" style="display: none;"></div>
+
+        <div class="btn-row">
+          <button id="printBtn" class="btn btn-primary" type="button">
+            Print / PDF
+          </button>
+          <button id="copyBtn" class="btn" type="button">
+            Copy text
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // ------------ SAME STORAGE KEY AS MAIN CRM ------------
+      const STORAGE_KEY = "krns_workshops app";
+
+      const state = {
+        customers: [],
+        vehicles: [],
+        services: [],
+      };
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed.customers)) state.customers = parsed.customers;
+          if (Array.isArray(parsed.vehicles)) state.vehicles = parsed.vehicles;
+          if (Array.isArray(parsed.services)) state.services = parsed.services;
+        } catch (e) {
+          console.error("Error loading CRM data", e);
+        }
+      }
+
+      function findCustomerById(id) {
+        return state.customers.find((c) => c.id === id) || null;
+      }
+
+      function findVehicleById(id) {
+        return state.vehicles.find((v) => v.id === id) || null;
+      }
+
+      function buildServiceDisplayData(service) {
+        const vehicle = findVehicleById(service.vehicleId);
+        const customer =
+          vehicle && vehicle.customerId
+            ? findCustomerById(vehicle.customerId)
+            : null;
+        return { service, vehicle, customer };
+      }
+
+      // ------------ RENDER JOB LIST ------------
+      function renderJobList() {
+        const listEl = document.getElementById("jobList");
+        const q = (document.getElementById("jobSearchInput").value || "")
+          .trim()
+          .toLowerCase();
+
+        let services = state.services.slice();
+
+        // Sort latest first by date, then id
+        services.sort((a, b) => {
+          const da = a.date || "";
+          const db = b.date || "";
+          if (da === db) return (b.id || "").localeCompare(a.id || "");
+          return db.localeCompare(da);
+        });
+
+        // Simple filter by vehicle, customer, or date
+        if (q) {
+          services = services.filter((s) => {
+            const { vehicle, customer } = buildServiceDisplayData(s);
+            const vNum = (vehicle && vehicle.number) || "";
+            const vModel = (vehicle && vehicle.model) || "";
+            const cName = (customer && customer.name) || "";
+            const cPhone = (customer && customer.phone) || "";
+            const date = s.date || "";
+            return (
+              vNum.toLowerCase().includes(q) ||
+              vModel.toLowerCase().includes(q) ||
+              cName.toLowerCase().includes(q) ||
+              cPhone.toLowerCase().includes(q) ||
+              date.toLowerCase().includes(q)
+            );
+          });
+        }
+
+        // keep list short
+        services = services.slice(0, 50);
+
+        listEl.innerHTML = "";
+        if (services.length === 0) {
+          const div = document.createElement("div");
+          div.className = "empty-text";
+          div.textContent = "No jobs found.";
+          listEl.appendChild(div);
+          return;
+        }
+
+        services.forEach((service) => {
+          const { vehicle, customer } = buildServiceDisplayData(service);
+
+          const card = document.createElement("div");
+          card.className = "job-card";
+
+          const header = document.createElement("div");
+          header.className = "job-header";
+
+          const main = document.createElement("div");
+          main.className = "job-main";
+          main.textContent =
+            (vehicle && vehicle.number) || "Unknown vehicle";
+
+          const right = document.createElement("div");
+          right.className = "job-sub";
+          right.textContent = service.date || "";
+
+          header.appendChild(main);
+          header.appendChild(right);
+
+          const sub = document.createElement("div");
+          sub.className = "job-sub";
+          const nameParts = [];
+          if (customer && customer.name) nameParts.push(customer.name);
+          if (customer && customer.phone) nameParts.push(customer.phone);
+          sub.textContent = nameParts.join(" • ");
+
+          const foot = document.createElement("div");
+          foot.className = "job-foot";
+          const desc = service.description || "";
+          const amt =
+            service.amount != null && service.amount !== ""
+              ? "₹" + service.amount
+              : "";
+          foot.textContent = [desc, amt].filter(Boolean).join(" • ");
+
+          card.appendChild(header);
+          card.appendChild(sub);
+          card.appendChild(foot);
+
+          card.addEventListener("click", () => {
+            showBill(service.id);
+          });
+
+          listEl.appendChild(card);
+        });
+      }
+
+      // ------------ SHOW BILL ------------
+      function showBill(serviceId) {
+        const service = state.services.find((s) => s.id === serviceId);
+        if (!service) return;
+
+        const { vehicle, customer } = buildServiceDisplayData(service);
+        const billBox = document.getElementById("billBox");
+        billBox.style.display = "block";
+
+        const customerName = (customer && customer.name) || "";
+        const customerPhone = (customer && customer.phone) || "";
+        const vehicleNumber = (vehicle && vehicle.number) || "";
+        const vehicleModel = (vehicle && vehicle.model) || "";
+        const date = service.date || "";
+        const desc = service.description || "";
+        const amount =
+          service.amount != null && service.amount !== ""
+            ? Number(service.amount)
+            : 0;
+
+        billBox.innerHTML = `
+          <div class="bill-line">
+            <span class="bill-label">Customer:</span>
+            <span> ${customerName}</span>
+          </div>
+          <div class="bill-line">
+            <span class="bill-label">Phone:</span>
+            <span> ${customerPhone}</span>
+          </div>
+          <div class="bill-line">
+            <span class="bill-label">Vehicle:</span>
+            <span> ${vehicleNumber}${
+          vehicleModel ? " • " + vehicleModel : ""
+        }</span>
+          </div>
+          <div class="bill-line">
+            <span class="bill-label">Date:</span>
+            <span> ${date}</span>
+          </div>
+          <div class="bill-line">
+            <span class="bill-label">Work:</span>
+            <span> ${desc}</span>
+          </div>
+          <div class="bill-total">
+            Total: ₹${amount.toFixed(2)}
+          </div>
+        `;
+
+        // Save plain text version on element for copy
+        billBox.dataset.text =
+          `Customer: ${customerName}\n` +
+          `Phone: ${customerPhone}\n` +
+          `Vehicle: ${vehicleNumber} ${vehicleModel}\n` +
+          `Date: ${date}\n` +
+          `Work: ${desc}\n` +
+          `Total: ₹${amount.toFixed(2)}`;
+      }
+
+      // ------------ BUTTON HANDLERS ------------
+      function setupActions() {
+        const printBtn = document.getElementById("printBtn");
+        const copyBtn = document.getElementById("copyBtn");
+
+        printBtn.addEventListener("click", () => {
+          window.print();
+        });
+
+        copyBtn.addEventListener("click", async () => {
+          const billBox = document.getElementById("billBox");
+          const text = billBox.dataset.text || "";
+          if (!text) return;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            alert("Bill copied.");
+          } catch (e) {
+            console.error("Copy failed", e);
+            alert("Copy failed.");
+          }
+        });
+
+        document
+          .getElementById("jobSearchInput")
+          .addEventListener("input", renderJobList);
+      }
+
+      // ------------ INIT ------------
+      document.addEventListener("DOMContentLoaded", () => {
+        loadState();
+        renderJobList();
+        setupActions();
+      });
+    </script>
+  </body>
+</html>
