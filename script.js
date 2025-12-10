@@ -3,45 +3,26 @@ const STORAGE_KEY = "krns_workshops app";
 const TEXT = {
   en: {
     app_title: "KRNS Workshops app",
+
+    // Tabs
     tab_home: "Home",
     tab_customers: "Customers",
     tab_jobs: "Jobs",
     tab_reminders: "Reminders",
+    tab_billing: "Billing",
 
-    // home search card
-    global_search_title: "History search",
-    global_search_date_label: "Filter by job date (optional)",
-    global_search_placeholder: "Search vehicle no. or customer name",
-    global_search_date_placeholder: "dd / mm / yyyy",
+    // Global search (GPay style)
+    search_placeholder: "Search name, mobile, vehicle no, date, job…",
+    no_results: "No results found",
 
-    search_placeholder: "Search vehicle no. or customer name", // keep old key
-    clear: "Clear",
-    no_matching_records: "No matching records",
+    // Home
+    home_quick_new_job_title: "New Job",
+    home_quick_today_title: "Today’s Jobs",
+    home_quick_customers_title: "Customers",
+    home_quick_billing_title: "Billing / Print",
+    home_recent_title: "Recent jobs",
 
-   home_quick_new_job_title: "Add Job / Service 🧰",
-home_quick_new_job_sub: "One tap job entry",
-
-home_quick_customers_title: "Customers 👤",
-home_quick_customers_sub: "Add / view customers",
-
-home_quick_today_title: "Today Entry 🗓",
-home_quick_today_sub: "Today’s jobs",
-
-home_quick_reminders_title: "Reminders 🔔",
-home_quick_reminders_sub: "Next service follow-ups",
-
-home_quick_billing_title: "Billing / Print 🖨️",
-home_quick_billing_sub: "Generate bill & print",
-
-
-    home_today_title: "Today",
-    home_reminders_title: "Reminders",
-    home_recent_title: "Recent Jobs",
-    view_all: "View all",
-    home_no_today: "No jobs today",
-    home_no_reminders: "No reminders",
-    home_no_recent: "No recent jobs",
-
+    // Customers
     customer_form_title: "Customer",
     customer_name_label: "Name*",
     customer_phone_label: "Phone*",
@@ -60,6 +41,7 @@ home_quick_billing_sub: "Generate bill & print",
     customer_history_title: "Customer History",
     no_customer_history: "No jobs for this customer yet",
 
+    // Vehicles
     vehicle_form_title: "Vehicle",
     vehicle_customer_label: "Customer*",
     vehicle_type_label: "Vehicle type*",
@@ -72,13 +54,14 @@ home_quick_billing_sub: "Generate bill & print",
     vehicle_search_placeholder: "Search by vehicle, model, customer",
     no_vehicles: "No vehicles",
 
+    // Jobs
     job_form_title_new: "New Job / Service",
     job_form_title_edit: "Edit Job / Service",
     job_date_label: "Job date*",
     job_vehicle_number_label: "Vehicle number*",
     job_vehicle_model_label: "Vehicle model",
     job_description_label: "Work done / description*",
-    job_amount_label: "Amount (₹)",
+    job_amount_label: "Total amount (₹)",
     job_next_date_label: "Next service date",
     job_customer_name_label: "Customer name",
     job_customer_phone_label: "Customer phone",
@@ -87,6 +70,7 @@ home_quick_billing_sub: "Generate bill & print",
     job_editing_hint: "Editing existing job. Save to update.",
     job_required_warning: "Please fill all required fields.",
 
+    // Today & reminders
     today_title: "Today’s jobs",
     no_jobs_today: "No jobs today",
 
@@ -107,46 +91,38 @@ home_quick_billing_sub: "Generate bill & print",
     edit_label: "Edit",
     delete_label: "Delete",
     delete_confirm: "Delete this job?",
+
+    // Billing
+    billing_title: "Billing",
+    billing_select_job: "Select job for billing",
+    billing_bill_preview: "Bill preview",
+    billing_print: "Print / PDF",
+    billing_empty: "Select a job from the list to generate bill.",
   },
+
   ta: {
     app_title: "KRNS வொர்க்ஷாப் app",
+
     tab_home: "முகப்பு",
     tab_customers: "கஸ்டமர்",
     tab_jobs: "ஜாப்",
     tab_reminders: "ரிமைண்டர்",
+    tab_billing: "பில்",
 
-    // home search card
-    global_search_title: "ஹிஸ்டரி சர்ச்",
-    global_search_date_label: "ஜாப் தேதியால் ஃபில்டர் (ஆப்ஷனல்)",
-    global_search_placeholder: "வாகன எண் / பெயர் தேடுக",
-    global_search_date_placeholder: "dd / mm / yyyy",
+    home_quick_title: "விரைவு செயல்கள்",
+    home_quick_new_job_title: "புதிய ஜாப்",
+    home_quick_today_title: "இன்றைய ஜாப்",
+    home_quick_customers_title: "கஸ்டமர்கள்",
+    home_quick_billing_title: "பில்லிங் / பிரிண்ட்",
 
-    search_placeholder: "வாகன எண் / பெயர் தேடுக",
-    clear: "ரிசெட்",
-    no_matching_records: "பதிவு இல்லை",
+    search_placeholder: "பெயர், மொபைல், வாகன எண், தேதீ, வேலை…",
+    no_results: "பதிவு இல்லை",
 
-   home_quick_new_job_title: "ஜாப் / சர்வீஸ் சேர்க்க 🧰",
-home_quick_new_job_sub: "ஒரே டச் என்ட்ரி",
-
-home_quick_customers_title: "கஸ்டமர்கள் 👤",
-home_quick_customers_sub: "சேர்க்க / பார்க்க",
-
-home_quick_today_title: "இன்றைய என்ட்ரி 🗓",
-home_quick_today_sub: "இன்றைய ஜாப்கள்",
-
-home_quick_reminders_title: "ரிமைண்டர்கள் 🔔",
-home_quick_reminders_sub: "அடுத்த சர்வீஸ் ஃபாலோஅப்",
-
-home_quick_billing_title: "பில்லிங் / பிரிண்ட் 🖨️",
-home_quick_billing_sub: "பில் உருவாக்க & பிரிண்ட்",
-
-    home_today_title: "இன்றைய ஜாப்",
-    home_reminders_title: "ரிமைண்டர்",
+    home_quick_new_job_title: "புதிய ஜாப்",
+    home_quick_today_title: "இன்றைய ஜாப்",
+    home_quick_customers_title: "கஸ்டமர்கள்",
+    home_quick_billing_title: "பில்லிங் / பிரிண்ட்",
     home_recent_title: "சமீபத்திய ஜாப்",
-    view_all: "அனைத்தையும் பார்க்க",
-    home_no_today: "இன்று ஜாப் இல்லை",
-    home_no_reminders: "ரிமைண்டர் இல்லை",
-    home_no_recent: "சமீபத்திய ஜாப் இல்லை",
 
     customer_form_title: "கஸ்டமர்",
     customer_name_label: "பெயர்*",
@@ -157,7 +133,7 @@ home_quick_billing_sub: "பில் உருவாக்க & பிரிண
     customer_search_placeholder: "பெயர் / மொபைல் தேடுக",
     no_customers: "கஸ்டமர் இல்லை",
 
-    customer_detail_title: "கஸ்டமர் விவரங்கள்",
+    customer_detail_title: "கஸ்டமர் விவரம்",
     customer_detail_add_vehicle: "வாகனம் சேர்க்க",
     customer_detail_add_job: "ஜாப் சேர்க்க",
     customer_detail_history_btn: "ஹிஸ்டரி",
@@ -213,6 +189,12 @@ home_quick_billing_sub: "பில் உருவாக்க & பிரிண
     edit_label: "எடிட்",
     delete_label: "டிலீட்",
     delete_confirm: "இந்த ஜாப் டிலீட் பண்ணலாமா?",
+
+    billing_title: "பில்",
+    billing_select_job: "பில் க்கு ஜாப் தேர்வு",
+    billing_bill_preview: "பில்",
+    billing_print: "பிரிண்ட் / PDF",
+    billing_empty: "லிஸ்ட்ல இருந்து ஜாப் தேர்வு செய்யவும்.",
   },
 };
 
@@ -224,6 +206,47 @@ const state = {
   editingServiceId: null,
   selectedCustomerId: null,
 };
+const THEME_STORAGE_KEY = "krns_theme"; // "dark" or "light"
+
+function updateThemeToggleIcon(theme) {
+  const btn = document.getElementById("themeToggleBtn");
+  if (!btn) return;
+  btn.textContent = theme === "light" ? "🌙" : "🌞";
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement; // <html>
+  const finalTheme = theme === "light" ? "light" : "dark";
+
+  if (finalTheme === "light") {
+    root.classList.add("theme-light");
+  } else {
+    root.classList.remove("theme-light");
+  }
+
+  localStorage.setItem(THEME_STORAGE_KEY, finalTheme);
+  updateThemeToggleIcon(finalTheme);
+}
+
+function initTheme() {
+  const saved =
+    localStorage.getItem(THEME_STORAGE_KEY) === "light" ? "light" : "dark";
+  applyTheme(saved);
+
+  const btn = document.getElementById("themeToggleBtn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const current =
+        document.documentElement.classList.contains("theme-light")
+          ? "light"
+          : "dark";
+      const next = current === "light" ? "dark" : "light";
+      applyTheme(next);
+    });
+  }
+}
+
+/* ---------- Utils ---------- */
 
 function t(key) {
   const lang = state.currentLang || "en";
@@ -254,7 +277,11 @@ function saveState() {
     services: state.services,
     currentLang: state.currentLang,
   };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  } catch (e) {
+    console.error("Error saving data", e);
+  }
 }
 
 function genId() {
@@ -296,8 +323,9 @@ function findVehicleByNumber(numberRaw) {
   const num = (numberRaw || "").trim().toUpperCase();
   if (!num) return null;
   return (
-    state.vehicles.find((v) => (v.number || "").trim().toUpperCase() === num) ||
-    null
+    state.vehicles.find(
+      (v) => (v.number || "").trim().toUpperCase() === num
+    ) || null
   );
 }
 
@@ -305,29 +333,30 @@ function normalizePhone(phone) {
   return (phone || "").replace(/\D/g, "");
 }
 
-/* ---------- Language Rendering ---------- */
+/* ---------- Language ---------- */
+
 function applyStaticTranslations() {
-  document
-    .querySelectorAll("[data-t]")
-    .forEach((el) => (el.textContent = t(el.getAttribute("data-t"))));
+  // normal text
+  document.querySelectorAll("[data-t]").forEach((el) => {
+    const key = el.getAttribute("data-t");
+    el.textContent = t(key);
+  });
 
+  // placeholders
   document.querySelectorAll("[data-t-placeholder]").forEach((el) => {
-    el.placeholder = t(el.getAttribute("data-t-placeholder"));
+    const key = el.getAttribute("data-t-placeholder");
+    el.placeholder = t(key);
   });
 
+  // select options
   document.querySelectorAll("[data-t-option]").forEach((opt) => {
-    opt.textContent = t(opt.getAttribute("data-t-option"));
+    const key = opt.getAttribute("data-t-option");
+    opt.textContent = t(key);
   });
 
-  const jobFormTitle = document.getElementById("jobFormTitle");
-  const jobFormSubmitBtn = document.getElementById("jobFormSubmitBtn");
-  if (state.editingServiceId) {
-    jobFormTitle.textContent = t("job_form_title_edit");
-    jobFormSubmitBtn.textContent = t("update_job");
-  } else {
-    jobFormTitle.textContent = t("job_form_title_new");
-    jobFormSubmitBtn.textContent = t("save_job");
-  }
+  // global search placeholder
+  const globalSearchInput = document.getElementById("globalSearchInput");
+  if (globalSearchInput) globalSearchInput.placeholder = t("search_placeholder");
 }
 
 function updateLangToggleButton() {
@@ -357,46 +386,33 @@ function setLanguage(lang) {
 }
 
 /* ---------- Navigation ---------- */
+
 const screenRootMap = {
   home: "home",
   customers: "customers",
-  jobs: "jobs",
-  reminders: "reminders",
-  today: "jobs",
-  vehicles: "customers",
   customerDetail: "customers",
   customerHistory: "customers",
+  vehicles: "customers",
+  jobs: "jobs",
+  today: "today",
+  reminders: "reminders",
+  billing: "billing",
 };
 
 function showScreen(screenName) {
   document.querySelectorAll(".screen").forEach((sec) => {
-    sec.classList.toggle("active", sec.dataset.screen === screenName);
+    const name = sec.getAttribute("data-screen");
+    sec.classList.toggle("active", name === screenName);
   });
 
   const rootTab = screenRootMap[screenName] || screenName;
   document.querySelectorAll(".tab-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.tab === rootTab);
+    const tab = btn.getAttribute("data-tab");
+    btn.classList.toggle("active", tab === rootTab);
   });
 }
 
-/* ---------- Rendering helpers ---------- */
-function renderAll() {
-  renderHomeSections();
-  renderCustomersList();
-  renderCustomerDetail();
-  renderCustomerHistory();
-  renderVehicleSelect();
-  renderVehicleList();
-  renderJobsTodayList();
-  renderTodayList();
-  renderRemindersList();
-  renderGlobalSearchResults();
-}
-
-/* Home is just buttons now */
-function renderHomeSections() {
-  // nothing dynamic on the home screen anymore
-}
+/* ---------- Data helpers ---------- */
 
 function buildCustomerVehicles(customerId) {
   return state.vehicles.filter((v) => v.customerId === customerId);
@@ -408,21 +424,23 @@ function buildCustomerServices(customerId) {
   return state.services
     .filter((s) => ids.has(s.vehicleId))
     .slice()
-    .sort((a, b) => (a.date || "").localeCompare(b.date || "") * -1);
+    .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 }
 
 function buildServiceDisplayData(service) {
   const vehicle = findVehicleById(service.vehicleId);
   const customer =
     vehicle && vehicle.customerId ? findCustomerById(vehicle.customerId) : null;
-
   return { service, vehicle, customer };
 }
 
 /* ---------- Customers ---------- */
+
 function renderCustomersList() {
   const list = document.getElementById("customerList");
   const searchInput = document.getElementById("customerSearchInput");
+  if (!list || !searchInput) return;
+
   const q = (searchInput.value || "").trim().toLowerCase();
 
   let filtered = state.customers;
@@ -445,7 +463,7 @@ function renderCustomersList() {
 
   filtered.forEach((customer) => {
     const item = document.createElement("div");
-    item.className = "list-item-card clickable";
+    item.className = "list-item-card";
 
     const header = document.createElement("div");
     header.className = "list-item-header";
@@ -478,9 +496,9 @@ function renderCustomersList() {
 
     item.addEventListener("click", () => {
       state.selectedCustomerId = customer.id;
-      showScreen("customerDetail");
       renderCustomerDetail();
       renderCustomerHistory();
+      showScreen("customerDetail");
     });
 
     list.appendChild(item);
@@ -489,10 +507,21 @@ function renderCustomersList() {
 
 function handleCustomerFormSubmit(ev) {
   ev.preventDefault();
-  const name = document.getElementById("customerNameInput").value.trim();
-  const phone = document.getElementById("customerPhoneInput").value.trim();
-  const hasWhatsapp = document.getElementById("customerWhatsappInput").checked;
-  const notes = document.getElementById("customerNotesInput").value.trim();
+
+  const nameInput = document.getElementById("customerNameInput");
+  const phoneInput = document.getElementById("customerPhoneInput");
+  const whatsappInput = document.getElementById("customerWhatsappInput");
+  const notesInput = document.getElementById("customerNotesInput");
+  const form = document.getElementById("customerForm");
+
+  if (!nameInput || !phoneInput || !whatsappInput || !notesInput || !form) {
+    return;
+  }
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const hasWhatsapp = whatsappInput.checked;
+  const notes = notesInput.value.trim();
 
   if (!name || !phone) {
     alert(t("job_required_warning"));
@@ -510,14 +539,16 @@ function handleCustomerFormSubmit(ev) {
   state.customers.push(newCustomer);
   saveState();
 
-  document.getElementById("customerForm").reset();
-  document.getElementById("customerWhatsappInput").checked = true;
+  form.reset();
+  whatsappInput.checked = true;
 
   renderCustomersList();
   renderVehicleSelect();
+  renderHomeRecentPeople();
 }
 
 /* ---------- Customer detail & history ---------- */
+
 function renderCustomerDetail() {
   const id = state.selectedCustomerId;
   const nameEl = document.getElementById("customerDetailName");
@@ -525,26 +556,28 @@ function renderCustomerDetail() {
   const notesEl = document.getElementById("customerDetailNotes");
   const vehicleList = document.getElementById("customerDetailVehicleList");
 
+  if (!nameEl || !phoneEl || !notesEl || !vehicleList) return;
+
   if (!id) {
-    nameEl.textContent = "";
-    phoneEl.textContent = "";
-    notesEl.textContent = "";
+    nameEl.value = "";
+    phoneEl.value = "";
+    notesEl.value = "";
     vehicleList.innerHTML = "";
     return;
   }
 
   const customer = findCustomerById(id);
   if (!customer) {
-    nameEl.textContent = t("unknown_customer");
-    phoneEl.textContent = "";
-    notesEl.textContent = "";
+    nameEl.value = "";
+    phoneEl.value = "";
+    notesEl.value = "";
     vehicleList.innerHTML = "";
     return;
   }
 
-  nameEl.textContent = customer.name || t("unknown_customer");
-  phoneEl.textContent = customer.phone || "";
-  notesEl.textContent = customer.notes || "";
+  nameEl.value = customer.name || "";
+  phoneEl.value = customer.phone || "";
+  notesEl.value = customer.notes || "";
 
   const vehicles = buildCustomerVehicles(customer.id);
 
@@ -572,9 +605,13 @@ function renderCustomerDetail() {
 
     const type = document.createElement("div");
     type.className = "list-item-sub";
-    if (vehicle.type === "bike") type.textContent = t("vehicle_type_bike");
-    else if (vehicle.type === "car") type.textContent = t("vehicle_type_car");
-    else type.textContent = "";
+    if (vehicle.type === "bike") {
+      type.textContent = t("vehicle_type_bike");
+    } else if (vehicle.type === "car") {
+      type.textContent = t("vehicle_type_car");
+    } else {
+      type.textContent = "";
+    }
 
     header.appendChild(title);
     header.appendChild(type);
@@ -582,7 +619,7 @@ function renderCustomerDetail() {
     const servicesForVehicle = state.services
       .filter((s) => s.vehicleId === vehicle.id)
       .slice()
-      .sort((a, b) => (a.date || "").localeCompare(b.date || "") * -1)
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
       .slice(0, 5);
 
     const body = document.createElement("div");
@@ -597,7 +634,7 @@ function renderCustomerDetail() {
         const parts = [];
         if (service.date) parts.push(service.date);
         if (service.description) parts.push(service.description);
-        if (service.amount)
+        if (service.amount != null)
           parts.push(t("amount_prefix") + " " + service.amount);
         if (service.nextDate) parts.push("Next: " + service.nextDate);
         line.textContent = parts.join(" • ");
@@ -611,11 +648,51 @@ function renderCustomerDetail() {
   });
 }
 
+function saveCustomerDetail() {
+  const id = state.selectedCustomerId;
+  if (!id) return;
+
+  const customer = findCustomerById(id);
+  if (!customer) return;
+
+  const nameEl = document.getElementById("customerDetailName");
+  const phoneEl = document.getElementById("customerDetailPhone");
+  const notesEl = document.getElementById("customerDetailNotes");
+  if (!nameEl || !phoneEl || !notesEl) return;
+
+  const name = nameEl.value.trim();
+  const phone = phoneEl.value.trim();
+  const notes = notesEl.value.trim();
+
+  if (!name || !phone) {
+    alert(t("job_required_warning"));
+    nameEl.value = customer.name || "";
+    phoneEl.value = customer.phone || "";
+    notesEl.value = customer.notes || "";
+    return;
+  }
+
+  customer.name = name;
+  customer.phone = phone;
+  customer.notes = notes;
+
+  saveState();
+
+  renderCustomersList();
+  renderCustomerHistory();
+  renderRemindersList();
+  renderTodayList();
+  renderHomeRecentPeople();
+  runGlobalSearch();
+}
+
 function renderCustomerHistory() {
   const container = document.getElementById("customerHistoryList");
   const nameEl = document.getElementById("customerHistoryName");
   const phoneEl = document.getElementById("customerHistoryPhone");
   const notesEl = document.getElementById("customerHistoryNotes");
+
+  if (!container || !nameEl || !phoneEl || !notesEl) return;
 
   const id = state.selectedCustomerId;
   if (!id) {
@@ -651,7 +728,8 @@ function renderCustomerHistory() {
   }
 
   services.forEach((service) => {
-    const { vehicle } = buildServiceDisplayData(service);
+    const data = buildServiceDisplayData(service);
+    const vehicle = data.vehicle;
     const item = document.createElement("div");
     item.className = "list-item-card";
 
@@ -675,7 +753,7 @@ function renderCustomerHistory() {
     if (service.date) parts.push(service.date);
     if (service.nextDate) parts.push("Next: " + service.nextDate);
     if (service.description) parts.push(service.description);
-    if (service.amount)
+    if (service.amount != null)
       parts.push(t("amount_prefix") + " " + service.amount);
     footer.textContent = parts.join(" • ");
 
@@ -686,6 +764,7 @@ function renderCustomerHistory() {
 }
 
 /* ---------- Vehicles ---------- */
+
 function renderVehicleSelect() {
   const select = document.getElementById("vehicleCustomerSelect");
   if (!select) return;
@@ -706,12 +785,16 @@ function renderVehicleSelect() {
     select.appendChild(opt);
   });
 
-  if (currentValue) select.value = currentValue;
+  if (currentValue) {
+    select.value = currentValue;
+  }
 }
 
 function renderVehicleList() {
   const list = document.getElementById("vehicleList");
   const searchInput = document.getElementById("vehicleSearchInput");
+  if (!list || !searchInput) return;
+
   const q = (searchInput.value || "").trim().toLowerCase();
 
   let filtered = state.vehicles;
@@ -751,9 +834,13 @@ function renderVehicleList() {
 
     const type = document.createElement("div");
     type.className = "list-item-sub";
-    if (vehicle.type === "bike") type.textContent = t("vehicle_type_bike");
-    else if (vehicle.type === "car") type.textContent = t("vehicle_type_car");
-    else type.textContent = "";
+    if (vehicle.type === "bike") {
+      type.textContent = t("vehicle_type_bike");
+    } else if (vehicle.type === "car") {
+      type.textContent = t("vehicle_type_car");
+    } else {
+      type.textContent = "";
+    }
 
     header.appendChild(title);
     header.appendChild(type);
@@ -772,11 +859,30 @@ function renderVehicleList() {
 
 function handleVehicleFormSubmit(ev) {
   ev.preventDefault();
-  const customerId = document.getElementById("vehicleCustomerSelect").value;
-  const type = document.getElementById("vehicleTypeSelect").value;
-  const model = document.getElementById("vehicleModelInput").value.trim();
-  const numberRaw = document.getElementById("vehicleNumberInput").value.trim();
-  const notes = document.getElementById("vehicleNotesInput").value.trim();
+
+  const customerSelect = document.getElementById("vehicleCustomerSelect");
+  const typeSelect = document.getElementById("vehicleTypeSelect");
+  const modelInput = document.getElementById("vehicleModelInput");
+  const numberInput = document.getElementById("vehicleNumberInput");
+  const notesInput = document.getElementById("vehicleNotesInput");
+  const form = document.getElementById("vehicleForm");
+
+  if (
+    !customerSelect ||
+    !typeSelect ||
+    !modelInput ||
+    !numberInput ||
+    !notesInput ||
+    !form
+  ) {
+    return;
+  }
+
+  const customerId = customerSelect.value;
+  const type = typeSelect.value;
+  const model = modelInput.value.trim();
+  const numberRaw = numberInput.value.trim();
+  const notes = notesInput.value.trim();
 
   if (!customerId || !type || !model || !numberRaw) {
     alert(t("job_required_warning"));
@@ -805,27 +911,37 @@ function handleVehicleFormSubmit(ev) {
   }
 
   saveState();
-  document.getElementById("vehicleForm").reset();
+  form.reset();
   renderVehicleList();
   renderCustomerDetail();
 }
 
 /* ---------- Jobs ---------- */
+
 function resetJobFormToNew() {
   state.editingServiceId = null;
   const form = document.getElementById("jobForm");
+  if (!form) return;
+
   form.reset();
+
   const dateInput = document.getElementById("jobDateInput");
-  dateInput.value = todayStr();
+  if (dateInput) {
+    dateInput.value = todayStr();
+  }
 
   const modeLabel = document.getElementById("jobFormModeLabel");
-  modeLabel.classList.add("hidden");
-  modeLabel.textContent = t("job_editing_hint");
+  if (modeLabel) {
+    modeLabel.classList.add("hidden");
+    modeLabel.textContent = t("job_editing_hint");
+  }
 
   const titleEl = document.getElementById("jobFormTitle");
   const btn = document.getElementById("jobFormSubmitBtn");
-  titleEl.textContent = t("job_form_title_new");
-  btn.textContent = t("save_job");
+  if (titleEl && btn) {
+    titleEl.textContent = t("job_form_title_new");
+    btn.textContent = t("save_job");
+  }
 }
 
 function startEditService(serviceId) {
@@ -838,28 +954,47 @@ function startEditService(serviceId) {
   const customer =
     vehicle && vehicle.customerId ? findCustomerById(vehicle.customerId) : null;
 
-  document.getElementById("jobDateInput").value =
-    service.date || todayStr();
-  document.getElementById("jobVehicleNumberInput").value =
-    (vehicle && vehicle.number) || "";
-  document.getElementById("jobVehicleModelInput").value =
-    (vehicle && vehicle.model) || "";
-  document.getElementById("jobDescriptionInput").value =
-    service.description || "";
-  document.getElementById("jobAmountInput").value =
-    service.amount != null ? service.amount : "";
-  document.getElementById("jobNextDateInput").value = service.nextDate || "";
-  document.getElementById("jobCustomerNameInput").value =
-    (customer && customer.name) || "";
-  document.getElementById("jobCustomerPhoneInput").value =
-    (customer && customer.phone) || "";
-
+  const dateInput = document.getElementById("jobDateInput");
+  const vehicleNumberInput = document.getElementById("jobVehicleNumberInput");
+  const vehicleModelInput = document.getElementById("jobVehicleModelInput");
+  const descInput = document.getElementById("jobDescriptionInput");
+  const amountInput = document.getElementById("jobAmountInput");
+  const nextDateInput = document.getElementById("jobNextDateInput");
+  const customerNameInput = document.getElementById("jobCustomerNameInput");
+  const customerPhoneInput = document.getElementById("jobCustomerPhoneInput");
   const modeLabel = document.getElementById("jobFormModeLabel");
+  const titleEl = document.getElementById("jobFormTitle");
+  const btn = document.getElementById("jobFormSubmitBtn");
+
+  if (
+    !dateInput ||
+    !vehicleNumberInput ||
+    !vehicleModelInput ||
+    !descInput ||
+    !amountInput ||
+    !nextDateInput ||
+    !customerNameInput ||
+    !customerPhoneInput ||
+    !modeLabel ||
+    !titleEl ||
+    !btn
+  ) {
+    return;
+  }
+
+  dateInput.value = service.date || todayStr();
+  vehicleNumberInput.value = (vehicle && vehicle.number) || "";
+  vehicleModelInput.value = (vehicle && vehicle.model) || "";
+  descInput.value = service.description || "";
+  amountInput.value =
+    service.amount != null && service.amount !== "" ? service.amount : "";
+  nextDateInput.value = service.nextDate || "";
+  customerNameInput.value = (customer && customer.name) || "";
+  customerPhoneInput.value = (customer && customer.phone) || "";
+
   modeLabel.classList.remove("hidden");
   modeLabel.textContent = t("job_editing_hint");
 
-  const titleEl = document.getElementById("jobFormTitle");
-  const btn = document.getElementById("jobFormSubmitBtn");
   titleEl.textContent = t("job_form_title_edit");
   btn.textContent = t("update_job");
 
@@ -869,24 +1004,36 @@ function startEditService(serviceId) {
 function handleJobFormSubmit(ev) {
   ev.preventDefault();
 
-  const date = document.getElementById("jobDateInput").value;
-  const vehicleNumberRaw = document
-    .getElementById("jobVehicleNumberInput")
-    .value.trim();
-  const vehicleModel = document
-    .getElementById("jobVehicleModelInput")
-    .value.trim();
-  const description = document
-    .getElementById("jobDescriptionInput")
-    .value.trim();
-  const amountStr = document.getElementById("jobAmountInput").value.trim();
-  const nextDate = document.getElementById("jobNextDateInput").value;
-  const customerName = document
-    .getElementById("jobCustomerNameInput")
-    .value.trim();
-  const customerPhoneRaw = document
-    .getElementById("jobCustomerPhoneInput")
-    .value.trim();
+  const dateInput = document.getElementById("jobDateInput");
+  const vehicleNumberInput = document.getElementById("jobVehicleNumberInput");
+  const vehicleModelInput = document.getElementById("jobVehicleModelInput");
+  const descInput = document.getElementById("jobDescriptionInput");
+  const amountInput = document.getElementById("jobAmountInput");
+  const nextDateInput = document.getElementById("jobNextDateInput");
+  const customerNameInput = document.getElementById("jobCustomerNameInput");
+  const customerPhoneInput = document.getElementById("jobCustomerPhoneInput");
+
+  if (
+    !dateInput ||
+    !vehicleNumberInput ||
+    !vehicleModelInput ||
+    !descInput ||
+    !amountInput ||
+    !nextDateInput ||
+    !customerNameInput ||
+    !customerPhoneInput
+  ) {
+    return;
+  }
+
+  const date = dateInput.value;
+  const vehicleNumberRaw = vehicleNumberInput.value.trim();
+  const vehicleModel = vehicleModelInput.value.trim();
+  const description = descInput.value.trim();
+  const amountStr = amountInput.value.trim();
+  const nextDate = nextDateInput.value;
+  const customerName = customerNameInput.value.trim();
+  const customerPhoneRaw = customerPhoneInput.value.trim();
 
   if (!date || !vehicleNumberRaw || !description) {
     alert(t("job_required_warning"));
@@ -896,6 +1043,7 @@ function handleJobFormSubmit(ev) {
   const vehicleNumber = vehicleNumberRaw.toUpperCase();
   const amount = toNumberOrNull(amountStr);
   const customerPhone = customerPhoneRaw;
+
   let customer = null;
 
   if (customerPhone) {
@@ -961,61 +1109,12 @@ function handleJobFormSubmit(ev) {
   renderAll();
 }
 
-/* ---------- Today lists ---------- */
-function renderJobsTodayList() {
-  const container = document.getElementById("jobsTodayList");
-  const today = todayStr();
-  const services = state.services.filter((s) => s.date === today);
-
-  container.innerHTML = "";
-  if (services.length === 0) {
-    const div = document.createElement("div");
-    div.className = "empty-text";
-    div.textContent = t("no_jobs_today");
-    container.appendChild(div);
-    return;
-  }
-
-  services
-    .slice()
-    .sort((a, b) => (a.date || "").localeCompare(b.date || "") * -1)
-    .forEach((service) => {
-      const { vehicle, customer } = buildServiceDisplayData(service);
-      const item = document.createElement("div");
-      item.className = "list-item-card";
-
-      const header = document.createElement("div");
-      header.className = "list-item-header";
-
-      const title = document.createElement("div");
-      title.className = "list-item-title";
-      title.textContent =
-        (vehicle && vehicle.number) || t("unknown_vehicle");
-
-      const right = document.createElement("div");
-      right.className = "list-item-sub";
-      right.textContent = service.amount
-        ? t("amount_prefix") + " " + service.amount
-        : "";
-
-      header.appendChild(title);
-      header.appendChild(right);
-
-      const footer = document.createElement("div");
-      footer.className = "list-item-footer";
-      const parts = [];
-      if (customer && customer.name) parts.push(customer.name);
-      if (service.description) parts.push(service.description);
-      footer.textContent = parts.join(" • ");
-
-      item.appendChild(header);
-      item.appendChild(footer);
-      container.appendChild(item);
-    });
-}
+/* ---------- Today ---------- */
 
 function renderTodayList() {
   const container = document.getElementById("todayList");
+  if (!container) return;
+
   const today = todayStr();
   const services = state.services.filter((s) => s.date === today);
 
@@ -1030,9 +1129,12 @@ function renderTodayList() {
 
   services
     .slice()
-    .sort((a, b) => (a.date || "").localeCompare(b.date || "") * -1)
+    .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
     .forEach((service) => {
-      const { vehicle, customer } = buildServiceDisplayData(service);
+      const data = buildServiceDisplayData(service);
+      const vehicle = data.vehicle;
+      const customer = data.customer;
+
       const item = document.createElement("div");
       item.className = "list-item-card";
 
@@ -1041,14 +1143,12 @@ function renderTodayList() {
 
       const title = document.createElement("div");
       title.className = "list-item-title";
-      title.textContent =
-        (vehicle && vehicle.number) || t("unknown_vehicle");
+      title.textContent = (vehicle && vehicle.number) || t("unknown_vehicle");
 
       const amountEl = document.createElement("div");
       amountEl.className = "list-item-sub";
-      amountEl.textContent = service.amount
-        ? t("amount_prefix") + " " + service.amount
-        : "";
+      amountEl.textContent =
+        service.amount != null ? t("amount_prefix") + " " + service.amount : "";
 
       header.appendChild(title);
       header.appendChild(amountEl);
@@ -1067,8 +1167,11 @@ function renderTodayList() {
 }
 
 /* ---------- Reminders ---------- */
+
 function renderRemindersList() {
   const container = document.getElementById("remindersList");
+  if (!container) return;
+
   const today = todayStr();
 
   const services = state.services
@@ -1086,7 +1189,9 @@ function renderRemindersList() {
   }
 
   services.forEach((service) => {
-    const { vehicle, customer } = buildServiceDisplayData(service);
+    const data = buildServiceDisplayData(service);
+    const vehicle = data.vehicle;
+    const customer = data.customer;
 
     const item = document.createElement("div");
     item.className = "list-item-card";
@@ -1096,8 +1201,7 @@ function renderRemindersList() {
 
     const title = document.createElement("div");
     title.className = "list-item-title";
-    title.textContent =
-      (vehicle && vehicle.number) || t("unknown_vehicle");
+    title.textContent = (vehicle && vehicle.number) || t("unknown_vehicle");
 
     const nextDateEl = document.createElement("div");
     nextDateEl.className = "list-item-sub";
@@ -1141,28 +1245,37 @@ function renderRemindersList() {
       btn.type = "button";
       btn.className = "btn btn-small btn-outline mt-4";
       btn.textContent = t("reminder_whatsapp");
+
       btn.addEventListener("click", () => {
-        const raw = normalizePhone(customer.phone);
-if (!raw) return;
+        const cleaned = normalizePhone(customer.phone);
+        if (!cleaned) return;
 
-// Add country code if missing (here I assume India - 91)
-const phone = raw.length <= 10 ? "91" + raw : raw;
+        let phone;
+        if (cleaned.startsWith("91")) {
+          phone = cleaned;
+        } else {
+          const lastTen = cleaned.slice(-10);
+          phone = "91" + lastTen;
+        }
 
-const msg =
-  `Hello ${customer?.name || ""}, your next service is due for vehicle ` +
-  `${vehicle?.number || ""} on ${service?.nextDate || ""}.`;
+        const msg =
+          "Hello " +
+          (customer.name || "") +
+          ", your next service is due for vehicle " +
+          ((vehicle && vehicle.number) || "") +
+          " on " +
+          (service.nextDate || "") +
+          ".";
 
-// More reliable API URL + no popup
-const url =
-  "https://api.whatsapp.com/send?phone=" +
-  phone +
-  "&text=" +
-  encodeURIComponent(msg);
+        const url =
+          "https://api.whatsapp.com/send?phone=" +
+          encodeURIComponent(phone) +
+          "&text=" +
+          encodeURIComponent(msg);
 
-// Use location change instead of window.open
-window.location.href = url;
-
+        window.location.href = url;
       });
+
       right.appendChild(btn);
     }
 
@@ -1176,127 +1289,367 @@ window.location.href = url;
   });
 }
 
-/* ---------- Global Search (History) ---------- */
-function renderGlobalSearchResults() {
-  const container = document.getElementById("globalSearchResults");
-  const q = (document.getElementById("globalSearchInput").value || "")
-    .trim()
-    .toLowerCase();
-  const dateFilter = document.getElementById("globalSearchDate").value;
+/* ---------- Global GPay-style search ---------- */
 
-  if (!q && !dateFilter) {
-    container.innerHTML = "";
+function runGlobalSearch() {
+  const input = document.getElementById("globalSearchInput");
+  const box = document.getElementById("globalSearchResults");
+  if (!input || !box) return;
+
+  const q = input.value.trim().toLowerCase();
+  box.innerHTML = "";
+  if (!q) {
+    // hide box when empty
+    box.style.display = "none";
     return;
   }
+  box.style.display = "block";
 
-  const matches = state.services.filter((service) => {
-    const { vehicle, customer } = buildServiceDisplayData(service);
-    const vehicleNum = (vehicle && vehicle.number) || "";
-    const customerName = (customer && customer.name) || "";
-    const matchesText =
-      !q ||
-      vehicleNum.toLowerCase().includes(q) ||
-      customerName.toLowerCase().includes(q);
-    const matchesDate = !dateFilter || service.date === dateFilter;
-    return matchesText && matchesDate;
+  const results = [];
+
+  // Services (jobs)
+  state.services.forEach((s) => {
+    const { vehicle, customer } = buildServiceDisplayData(s);
+    const fields = [
+      s.description,
+      s.date,
+      String(s.amount || ""),
+      vehicle && vehicle.number,
+      vehicle && vehicle.model,
+      customer && customer.name,
+      customer && customer.phone,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    if (fields.includes(q)) {
+      results.push({
+        type: "job",
+        id: s.id,
+        title: (vehicle && vehicle.number) || t("unknown_vehicle"),
+        sub:
+          (customer && customer.name ? customer.name + " • " : "") +
+          (s.date || "") +
+          (s.amount != null ? " • " + t("amount_prefix") + s.amount : ""),
+      });
+    }
   });
 
-  container.innerHTML = "";
-  if (matches.length === 0) {
+  // Customers
+  state.customers.forEach((c) => {
+    const fields = [c.name, c.phone, c.notes].filter(Boolean).join(" ").toLowerCase();
+    if (fields.includes(q)) {
+      results.push({
+        type: "customer",
+        id: c.id,
+        title: c.name || t("unknown_customer"),
+        sub: c.phone || "",
+      });
+    }
+  });
+
+  // Vehicles
+  state.vehicles.forEach((v) => {
+    const fields = [v.number, v.model].filter(Boolean).join(" ").toLowerCase();
+    if (fields.includes(q)) {
+      results.push({
+        type: "vehicle",
+        id: v.id,
+        title: v.number || t("unknown_vehicle"),
+        sub: v.model || "",
+      });
+    }
+  });
+
+  const finalResults = results.slice(0, 40);
+
+  if (finalResults.length === 0) {
     const div = document.createElement("div");
-    div.className = "empty-text";
-    div.textContent = t("no_matching_records");
-    container.appendChild(div);
+    div.className = "search-item";
+    div.textContent = t("no_results");
+    box.appendChild(div);
     return;
   }
 
-  matches
-    .slice()
-    .sort((a, b) => (a.date || "").localeCompare(b.date || "") * -1)
-    .forEach((service) => {
-      const { vehicle, customer } = buildServiceDisplayData(service);
-      const card = document.createElement("div");
-      card.className = "search-result-card";
+  finalResults.forEach((r) => {
+    const item = document.createElement("div");
+    item.className = "search-item";
+    const title = document.createElement("div");
+    title.className = "search-title";
+    title.textContent = r.title;
+    const sub = document.createElement("div");
+    sub.className = "search-sub";
+    sub.textContent = r.sub;
 
-      const header = document.createElement("div");
-      header.className = "search-result-header";
-      const left = document.createElement("div");
-      left.textContent =
-        (vehicle && vehicle.number) || t("unknown_vehicle");
-      const right = document.createElement("div");
-      right.textContent = (vehicle && vehicle.model) || "";
-      header.appendChild(left);
-      header.appendChild(right);
+    item.appendChild(title);
+    item.appendChild(sub);
 
-      const main = document.createElement("div");
-      main.className = "search-result-main";
-      const lines = [];
-      if (customer) {
-        const namePhone = [];
-        if (customer.name) namePhone.push(customer.name);
-        if (customer.phone) namePhone.push(customer.phone);
-        if (namePhone.length) lines.push(namePhone.join(" • "));
+    item.addEventListener("click", () => {
+      if (r.type === "job") {
+        startEditService(r.id);
+      } else if (r.type === "customer") {
+        state.selectedCustomerId = r.id;
+        renderCustomerDetail();
+        renderCustomerHistory();
+        showScreen("customerDetail");
+      } else if (r.type === "vehicle") {
+        showScreen("vehicles");
       }
-      const dateLine = [];
-      if (service.date) dateLine.push(service.date);
-      if (service.nextDate) dateLine.push("Next: " + service.nextDate);
-      if (dateLine.length) lines.push(dateLine.join(" • "));
-      if (service.description) lines.push(service.description);
-      if (service.amount)
-        lines.push(t("amount_prefix") + " " + service.amount);
-      main.textContent = lines.join(" | ");
 
-      const actions = document.createElement("div");
-      actions.className = "search-result-actions";
-      const btnEdit = document.createElement("button");
-      btnEdit.type = "button";
-      btnEdit.className = "btn btn-small btn-outline";
-      btnEdit.textContent = t("edit_label");
-      btnEdit.addEventListener("click", () => startEditService(service.id));
-
-      const btnDelete = document.createElement("button");
-      btnDelete.type = "button";
-      btnDelete.className = "btn btn-small btn-danger";
-      btnDelete.textContent = t("delete_label");
-      btnDelete.addEventListener("click", () => {
-        const ok = confirm(t("delete_confirm"));
-        if (!ok) return;
-        const idx = state.services.findIndex((s) => s.id === service.id);
-        if (idx >= 0) {
-          state.services.splice(idx, 1);
-          saveState();
-          renderAll();
-        }
-      });
-
-      actions.appendChild(btnEdit);
-      actions.appendChild(btnDelete);
-
-      card.appendChild(header);
-      card.appendChild(main);
-      card.appendChild(actions);
-      container.appendChild(card);
+      input.value = "";
+      box.innerHTML = "";
+      box.style.display = "none";
     });
+
+    box.appendChild(item);
+  });
 }
 
-/* ---------- Event wiring ---------- */
-function setupEvents() {
-  const langToggle = document.getElementById("langToggleBtn");
-  langToggle.addEventListener("click", () => {
-    const next = state.currentLang === "en" ? "ta" : "en";
-    setLanguage(next);
+/* ---------- Billing (merged) ---------- */
+
+function renderBillingJobList() {
+  const listEl = document.getElementById("billingJobList");
+  const searchEl = document.getElementById("billingJobSearchInput");
+  if (!listEl || !searchEl) return;
+
+  const q = (searchEl.value || "").trim().toLowerCase();
+
+  let services = state.services.slice();
+
+  services.sort((a, b) => {
+    const da = a.date || "";
+    const db = b.date || "";
+    if (da === db) return (b.id || "").localeCompare(a.id || "");
+    return db.localeCompare(da);
   });
 
+  if (q) {
+    services = services.filter((s) => {
+      const { vehicle, customer } = buildServiceDisplayData(s);
+      const vNum = (vehicle && vehicle.number) || "";
+      const vModel = (vehicle && vehicle.model) || "";
+      const cName = (customer && customer.name) || "";
+      const cPhone = (customer && customer.phone) || "";
+      const date = s.date || "";
+      const desc = s.description || "";
+      const amount = s.amount != null ? String(s.amount) : "";
+      const fields = [vNum, vModel, cName, cPhone, date, desc, amount]
+        .join(" ")
+        .toLowerCase();
+      return fields.includes(q);
+    });
+  }
+
+  services = services.slice(0, 50);
+
+  listEl.innerHTML = "";
+  if (services.length === 0) {
+    const div = document.createElement("div");
+    div.className = "empty-text";
+    div.textContent = t("no_results");
+    listEl.appendChild(div);
+    return;
+  }
+
+  services.forEach((service) => {
+    const { vehicle, customer } = buildServiceDisplayData(service);
+
+    const card = document.createElement("div");
+    card.className = "job-card";
+
+    const header = document.createElement("div");
+    header.className = "job-header";
+
+    const main = document.createElement("div");
+    main.className = "job-main";
+    main.textContent =
+      (vehicle && vehicle.number) || t("unknown_vehicle");
+
+    const right = document.createElement("div");
+    right.className = "job-sub";
+    right.textContent = service.date || "";
+
+    header.appendChild(main);
+    header.appendChild(right);
+
+    const sub = document.createElement("div");
+    sub.className = "job-sub";
+    const nameParts = [];
+    if (customer && customer.name) nameParts.push(customer.name);
+    if (customer && customer.phone) nameParts.push(customer.phone);
+    sub.textContent = nameParts.join(" • ");
+
+    const foot = document.createElement("div");
+    foot.className = "job-foot";
+    const desc = service.description || "";
+    const amt =
+      service.amount != null && service.amount !== ""
+        ? t("amount_prefix") + service.amount
+        : "";
+    foot.textContent = [desc, amt].filter(Boolean).join(" • ");
+
+    card.appendChild(header);
+    card.appendChild(sub);
+    card.appendChild(foot);
+
+    card.addEventListener("click", () => {
+      showBill(service.id);
+    });
+
+    listEl.appendChild(card);
+  });
+}
+
+function showBill(serviceId) {
+  const service = state.services.find((s) => s.id === serviceId);
+  if (!service) return;
+
+  const { vehicle, customer } = buildServiceDisplayData(service);
+  const billBox = document.getElementById("billingBillBox");
+  if (!billBox) return;
+
+  const customerName = (customer && customer.name) || "";
+  const customerPhone = (customer && customer.phone) || "";
+  const vehicleNumber = (vehicle && vehicle.number) || "";
+  const vehicleModel = (vehicle && vehicle.model) || "";
+  const date = service.date || "";
+  const desc = service.description || "";
+  const amount =
+    service.amount != null && service.amount !== ""
+      ? Number(service.amount)
+      : 0;
+
+  billBox.classList.remove("empty-text");
+  billBox.innerHTML =
+    '<div class="bill-line">' +
+    '<span class="bill-label">Customer:</span>' +
+    "<span> " +
+    customerName +
+    "</span>" +
+    "</div>" +
+    '<div class="bill-line">' +
+    '<span class="bill-label">Phone:</span>' +
+    "<span> " +
+    customerPhone +
+    "</span>" +
+    "</div>" +
+    '<div class="bill-line">' +
+    '<span class="bill-label">Vehicle:</span>' +
+    "<span> " +
+    vehicleNumber +
+    (vehicleModel ? " • " + vehicleModel : "") +
+    "</span>" +
+    "</div>" +
+    '<div class="bill-line">' +
+    '<span class="bill-label">Date:</span>' +
+    "<span> " +
+    date +
+    "</span>" +
+    "</div>" +
+    '<div class="bill-line">' +
+    '<span class="bill-label">Work:</span>' +
+    "<span> " +
+    desc +
+    "</span>" +
+    "</div>" +
+    '<div class="bill-total">' +
+    "Total: " +
+    t("amount_prefix") +
+    amount.toFixed(2) +
+    "</div>";
+}
+
+/* ---------- Home recent “people chips” ---------- */
+
+function renderHomeRecentPeople() {
+  const container = document.getElementById("homeRecentPeople");
+  if (!container) return;
+
+  const services = state.services
+    .slice()
+    .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
+    .slice(0, 12);
+
+  container.innerHTML = "";
+  if (services.length === 0) {
+    const span = document.createElement("span");
+    span.className = "empty-text";
+    span.textContent = t("no_customer_history");
+    container.appendChild(span);
+    return;
+  }
+
+  services.forEach((service) => {
+    const { vehicle, customer } = buildServiceDisplayData(service);
+
+    const chip = document.createElement("div");
+    chip.className = "people-chip";
+
+    const avatar = document.createElement("div");
+    avatar.className = "people-avatar";
+
+    const labelText =
+      (vehicle && vehicle.number) ||
+      (customer && customer.name) ||
+      t("unknown_vehicle");
+
+    const firstChar = labelText.trim().charAt(0).toUpperCase() || "?";
+    avatar.textContent = firstChar;
+
+    const label = document.createElement("div");
+    label.className = "people-label";
+    label.textContent = labelText;
+
+    chip.appendChild(avatar);
+    chip.appendChild(label);
+
+    chip.addEventListener("click", () => {
+      startEditService(service.id);
+    });
+
+    container.appendChild(chip);
+  });
+}
+
+/* ---------- Render all ---------- */
+
+function renderAll() {
+  renderCustomersList();
+  renderCustomerDetail();
+  renderCustomerHistory();
+  renderVehicleSelect();
+  renderVehicleList();
+  renderTodayList();
+  renderRemindersList();
+  renderBillingJobList();
+  renderHomeRecentPeople();
+  runGlobalSearch();
+}
+
+/* ---------- Events ---------- */
+
+function setupEvents() {
+  const langToggle = document.getElementById("langToggleBtn");
+  if (langToggle) {
+    langToggle.addEventListener("click", () => {
+      const next = state.currentLang === "en" ? "ta" : "en";
+      setLanguage(next);
+    });
+  }
+
+  // Bottom nav tabs
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const tab = btn.dataset.tab;
-      if (tab === "jobs") {
-        resetJobFormToNew();
-      }
+      const tab = btn.getAttribute("data-tab");
+      if (!tab) return;
+      if (tab === "jobs") resetJobFormToNew();
       showScreen(tab);
+      if (tab === "billing") renderBillingJobList();
     });
   });
 
+  // Home quick actions
   document
     .querySelectorAll("[data-action='openJobForm']")
     .forEach((el) =>
@@ -1307,102 +1660,117 @@ function setupEvents() {
     );
 
   document
-    .querySelectorAll("[data-action='openCustomers']")
-    .forEach((el) =>
-      el.addEventListener("click", () => {
-        showScreen("customers");
-      })
-    );
-
-  document
     .querySelectorAll("[data-action='openToday']")
     .forEach((el) =>
-      el.addEventListener("click", () => {
-        showScreen("today");
-      })
+      el.addEventListener("click", () => showScreen("today"))
     );
 
   document
-    .querySelectorAll("[data-action='openReminders']")
+    .querySelectorAll("[data-action='openCustomers']")
+    .forEach((el) =>
+      el.addEventListener("click", () => showScreen("customers"))
+    );
+
+  document
+    .querySelectorAll("[data-action='openBilling']")
     .forEach((el) =>
       el.addEventListener("click", () => {
-        showScreen("reminders");
+        showScreen("billing");
+        renderBillingJobList();
       })
     );
 
-  document
-    .getElementById("customerForm")
-    .addEventListener("submit", handleCustomerFormSubmit);
+  // Forms & searches
+  const customerForm = document.getElementById("customerForm");
+  if (customerForm) {
+    customerForm.addEventListener("submit", handleCustomerFormSubmit);
+  }
 
-  document
-    .getElementById("customerSearchInput")
-    .addEventListener("input", renderCustomersList);
+  const customerSearchInput = document.getElementById("customerSearchInput");
+  if (customerSearchInput) {
+    customerSearchInput.addEventListener("input", renderCustomersList);
+  }
 
-  document
-    .getElementById("vehicleForm")
-    .addEventListener("submit", handleVehicleFormSubmit);
+  const vehicleForm = document.getElementById("vehicleForm");
+  if (vehicleForm) {
+    vehicleForm.addEventListener("submit", handleVehicleFormSubmit);
+  }
 
-  document
-    .getElementById("vehicleSearchInput")
-    .addEventListener("input", renderVehicleList);
+  const vehicleSearchInput = document.getElementById("vehicleSearchInput");
+  if (vehicleSearchInput) {
+    vehicleSearchInput.addEventListener("input", renderVehicleList);
+  }
 
-  document
-    .getElementById("jobForm")
-    .addEventListener("submit", handleJobFormSubmit);
+  const jobForm = document.getElementById("jobForm");
+  if (jobForm) {
+    jobForm.addEventListener("submit", handleJobFormSubmit);
+  }
 
-  document
-    .getElementById("globalSearchInput")
-    .addEventListener("input", renderGlobalSearchResults);
-  document
-    .getElementById("globalSearchDate")
-    .addEventListener("change", renderGlobalSearchResults);
-  document
-    .getElementById("globalSearchClear")
-    .addEventListener("click", () => {
-      document.getElementById("globalSearchInput").value = "";
-      document.getElementById("globalSearchDate").value = "";
-      renderGlobalSearchResults();
-    });
+  const globalSearchInput = document.getElementById("globalSearchInput");
+  if (globalSearchInput) {
+    globalSearchInput.addEventListener("input", runGlobalSearch);
+  }
 
-  // Customer detail buttons
-  document
-    .getElementById("customerDetailAddVehicleBtn")
-    .addEventListener("click", () => {
+  const saveCustomerDetailBtn = document.getElementById("customerDetailSaveBtn");
+  if (saveCustomerDetailBtn) {
+    saveCustomerDetailBtn.addEventListener("click", saveCustomerDetail);
+  }
+
+  const addVehicleBtn = document.getElementById("customerDetailAddVehicleBtn");
+  if (addVehicleBtn) {
+    addVehicleBtn.addEventListener("click", () => {
       renderVehicleSelect();
       const customerId = state.selectedCustomerId;
-      if (customerId) {
-        document.getElementById("vehicleCustomerSelect").value = customerId;
-      }
+      const vehicleSelect = document.getElementById("vehicleCustomerSelect");
+      if (customerId && vehicleSelect) vehicleSelect.value = customerId;
       showScreen("vehicles");
     });
+  }
 
-  document
-    .getElementById("customerDetailAddJobBtn")
-    .addEventListener("click", () => {
+  const addJobBtn = document.getElementById("customerDetailAddJobBtn");
+  if (addJobBtn) {
+    addJobBtn.addEventListener("click", () => {
       const customer = state.selectedCustomerId
         ? findCustomerById(state.selectedCustomerId)
         : null;
       resetJobFormToNew();
       if (customer) {
-        document.getElementById("jobCustomerNameInput").value =
-          customer.name || "";
-        document.getElementById("jobCustomerPhoneInput").value =
-          customer.phone || "";
+        const nameInput = document.getElementById("jobCustomerNameInput");
+        const phoneInput = document.getElementById("jobCustomerPhoneInput");
+        if (nameInput) nameInput.value = customer.name || "";
+        if (phoneInput) phoneInput.value = customer.phone || "";
       }
       showScreen("jobs");
     });
+  }
 
-  document
-    .getElementById("customerDetailHistoryBtn")
-    .addEventListener("click", () => {
+  const historyBtn = document.getElementById("customerDetailHistoryBtn");
+  if (historyBtn) {
+    historyBtn.addEventListener("click", () => {
       renderCustomerHistory();
       showScreen("customerHistory");
     });
+  }
+
+  const billingSearchInput = document.getElementById("billingJobSearchInput");
+  if (billingSearchInput) {
+    billingSearchInput.addEventListener("input", renderBillingJobList);
+  }
+
+  const printBtn = document.getElementById("billingPrintBtn");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => window.print());
+  }
 }
 
 /* ---------- Init ---------- */
+
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
+
+  // THEME MUST BE INITIALIZED FIRST
+  initTheme();
+
   updateLangToggleButton();
   applyStaticTranslations();
 
