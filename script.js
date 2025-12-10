@@ -8,6 +8,7 @@ const TEXT = {
     tab_home: "Home",
     tab_customers: "Customers",
     tab_jobs: "Jobs",
+    tab_today: "Today",
     tab_reminders: "Reminders",
     tab_billing: "Billing",
 
@@ -16,6 +17,7 @@ const TEXT = {
     no_results: "No results found",
 
     // Home
+    home_quick_title: "Quick actions",
     home_quick_new_job_title: "New Job",
     home_quick_today_title: "Today’s Jobs",
     home_quick_customers_title: "Customers",
@@ -106,6 +108,7 @@ const TEXT = {
     tab_home: "முகப்பு",
     tab_customers: "கஸ்டமர்",
     tab_jobs: "ஜாப்",
+    tab_today: "இன்று",
     tab_reminders: "ரிமைண்டர்",
     tab_billing: "பில்",
 
@@ -118,10 +121,6 @@ const TEXT = {
     search_placeholder: "பெயர், மொபைல், வாகன எண், தேதீ, வேலை…",
     no_results: "பதிவு இல்லை",
 
-    home_quick_new_job_title: "புதிய ஜாப்",
-    home_quick_today_title: "இன்றைய ஜாப்",
-    home_quick_customers_title: "கஸ்டமர்கள்",
-    home_quick_billing_title: "பில்லிங் / பிரிண்ட்",
     home_recent_title: "சமீபத்திய ஜாப்",
 
     customer_form_title: "கஸ்டமர்",
@@ -206,6 +205,7 @@ const state = {
   editingServiceId: null,
   selectedCustomerId: null,
 };
+
 const THEME_STORAGE_KEY = "krns_theme"; // "dark" or "light"
 
 function updateThemeToggleIcon(theme) {
@@ -762,12 +762,12 @@ function renderCustomerHistory() {
     container.appendChild(item);
   });
 }
-
 /* ---------- Vehicles ---------- */
 
 function renderVehicleSelect() {
   const select = document.getElementById("vehicleCustomerSelect");
   if (!select) return;
+
   const currentValue = select.value;
 
   select.innerHTML = "";
@@ -1288,7 +1288,6 @@ function renderRemindersList() {
     container.appendChild(item);
   });
 }
-
 /* ---------- Global GPay-style search ---------- */
 
 function runGlobalSearch() {
@@ -1299,7 +1298,6 @@ function runGlobalSearch() {
   const q = input.value.trim().toLowerCase();
   box.innerHTML = "";
   if (!q) {
-    // hide box when empty
     box.style.display = "none";
     return;
   }
@@ -1338,7 +1336,10 @@ function runGlobalSearch() {
 
   // Customers
   state.customers.forEach((c) => {
-    const fields = [c.name, c.phone, c.notes].filter(Boolean).join(" ").toLowerCase();
+    const fields = [c.name, c.phone, c.notes]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
     if (fields.includes(q)) {
       results.push({
         type: "customer",
@@ -1406,7 +1407,7 @@ function runGlobalSearch() {
   });
 }
 
-/* ---------- Billing (merged) ---------- */
+/* ---------- Billing ---------- */
 
 function renderBillingJobList() {
   const listEl = document.getElementById("billingJobList");
@@ -1521,6 +1522,7 @@ function showBill(serviceId) {
       : 0;
 
   billBox.classList.remove("empty-text");
+  billBox.removeAttribute("data-t");
   billBox.innerHTML =
     '<div class="bill-line">' +
     '<span class="bill-label">Customer:</span>' +
@@ -1646,6 +1648,8 @@ function setupEvents() {
       if (tab === "jobs") resetJobFormToNew();
       showScreen(tab);
       if (tab === "billing") renderBillingJobList();
+      if (tab === "reminders") renderRemindersList();
+      if (tab === "today") renderTodayList();
     });
   });
 
