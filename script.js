@@ -1172,15 +1172,53 @@ function renderRemindersList() {
   const container = document.getElementById("remindersList");
   if (!container) return;
 
+  const now = new Date();
   const today = todayStr();
 
+  // sort by nextDate asc
   const services = state.services
-    .filter((s) => s.nextDate)
+    .filter((s) => s.nextDate) // only services with nextDate
     .slice()
     .sort((a, b) => (a.nextDate || "").localeCompare(b.nextDate || ""));
 
   container.innerHTML = "";
-  if (services.length === 0) {
+
+  // Build visible list with 12-hour overdue cutoff
+  const visible = services.filter((service) => {
+    const nd = service.nextDate; // format: "YYYY-MM-DD"
+    if (!nd) return false;
+
+    // parse due day end in local time (23:59:59)
+    const dueDayEnd = new Date(nd + "T23:59:59");
+    if (isNaN(dueDayEnd.getTime())) {
+      // fallback: if parsing fails, show it
+      return true;
+    }
+
+    if (nd > today) {
+      // upcoming future date — show
+      return true;
+    }
+
+    // nd === today or nd < today -> overdue or today
+    if (nd === today) {
+      // due today: show (it's still within the day)
+      return true;
+    }
+
+    // nd < today: past date — only show if within 12 hours after day end
+    const msSinceDueEnd = now - dueDayEnd;
+    const twelveHoursMs = 12 * 60 * 60 * 1000;
+    if (msSinceDueEnd <= twelveHoursMs) {
+      // still within 12 hours after due day end — keep showing as overdue
+      return true;
+    }
+
+    // older than 12 hours past due day end — hide from Reminders
+    return false;
+  });
+
+  if (visible.length === 0) {
     const div = document.createElement("div");
     div.className = "empty-text";
     div.textContent = t("no_reminders");
@@ -1188,7 +1226,7 @@ function renderRemindersList() {
     return;
   }
 
-  services.forEach((service) => {
+  visible.forEach((service) => {
     const data = buildServiceDisplayData(service);
     const vehicle = data.vehicle;
     const customer = data.customer;
@@ -1218,19 +1256,19 @@ function renderRemindersList() {
 
     const left = document.createElement("div");
     left.className = "text-small";
-    left.textContent = customer
-      ? customer.name || ""
-      : t("unknown_customer");
+    left.textContent = customer ? customer.name || "" : t("unknown_customer");
 
     const right = document.createElement("div");
 
     const badge = document.createElement("span");
     badge.className = "badge text-small";
 
-    if (service.nextDate < today) {
+    // determine badge state: overdue / today / upcoming
+    const nd = service.nextDate;
+    if (nd < today) {
       badge.classList.add("badge-overdue");
       badge.textContent = t("reminder_overdue");
-    } else if (service.nextDate === today) {
+    } else if (nd === today) {
       badge.classList.add("badge-today");
       badge.textContent = t("reminder_today");
     } else {
@@ -1288,6 +1326,7 @@ function renderRemindersList() {
     container.appendChild(item);
   });
 }
+
 /* ---------- Global GPay-style search ---------- */
 
 function runGlobalSearch() {
